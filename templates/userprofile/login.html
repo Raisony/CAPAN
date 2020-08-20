@@ -1,0 +1,46 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+{% extends "base.html" %} {% load staticfiles %}
+{% block title %} Log in {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h5>Not a member? Join now</h5>
+            <h5><a href='{% url "userprofile:register" %}'>Register</a></h5>
+            <br>
+
+
+            <form method="post" action=".">
+                {% csrf_token %}
+                <!-- 账号 -->
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <!-- 密码 -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <br>
+            <h5>Don't remember your password?</h5>
+            <h5><a href="{% url "password_reset_recover" %}">Reset password</a></h5>
+        </div>
+    </div>
+</div>
+{% endblock content %}

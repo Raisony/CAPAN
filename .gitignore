@@ -1,0 +1,11 @@
+# Text backup files
+*.bak
+
+#Database
+*.sqlite3
+
+*.pyc
+__pycache__
+django
+db.sqlite3
+.DS_Store

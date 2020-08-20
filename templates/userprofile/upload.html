@@ -1,0 +1,42 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+{% extends "base.html" %} {% load staticfiles %}
+{% block title %} Resume {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <div class="col-md-4">Username: {{ user.username }}</div>
+            <br>
+            {% if profile.resume %}
+                <h5 class="col-md-4">Resume detected</h5>
+{#                <img src="{{ profile.resume.url }}" style="max-width: 20%; border-radius: 15%;" class="col-md-4">#}
+            {% else %}
+                <h5 class="col-md-4">No resume detected</h5>
+            {% endif %}
+            <br>
+            <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- avatar -->
+                <div class="form-group col-md-4">
+                    <label for="resume">Upload</label>
+                    <input type="file" class="form-control-file" name="resume" id="resume">
+                </div>
+
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
